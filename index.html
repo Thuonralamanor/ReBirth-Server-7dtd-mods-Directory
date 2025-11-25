@@ -1,2 +1,63 @@
 <!DOCTYPE html>
-<html><body><h1>Mods Directory aktiv!</h1></body></html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<title>ReBirth Server Mods Directory</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #101010;
+        color: #eee;
+        padding: 20px;
+    }
+    h1 {
+        color: #4cff4c;
+    }
+    .file {
+        margin: 10px 0;
+        padding: 10px;
+        background: #1b1b1b;
+        border-radius: 6px;
+    }
+    a {
+        color: #4cff4c;
+        font-weight: bold;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+<h1>ReBirth Server Mods – Downloads</h1>
+<p>Alle ZIP-Dateien im Repository werden hier automatisch angezeigt.</p>
+
+<div id="list">Lade Dateien…</div>
+
+<script>
+async function loadFiles() {
+    const api = "https://api.github.com/repos/Thuonralamanor/ReBirth-Server-7dtd-mods/contents/";
+    const list = document.getElementById("list");
+
+    try {
+        const res = await fetch(api);
+        const files = await res.json();
+
+        let html = "";
+        files.forEach(f => {
+            if (f.name.toLowerCase().endsWith(".zip")) {
+                html += `<div class="file">
+                    <a href="${f.download_url}" download>${f.name}</a>
+                </div>`;
+            }
+        });
+
+        list.innerHTML = html || "Keine ZIP-Dateien gefunden.";
+    } catch(e) {
+        list.innerHTML = "Fehler beim Laden der Dateien.";
+    }
+}
+
+loadFiles();
+</script>
+
+</body>
+</html>
