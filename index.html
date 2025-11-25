@@ -5,32 +5,64 @@
 <title>ReBirth Server Mods Directory</title>
 <style>
     body {
+        margin: 0;
+        padding: 0;
         font-family: Arial, sans-serif;
-        background: #101010;
         color: #eee;
+        background: #000;
+    }
+
+    /* Rebirth Hintergrund */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://static.wikia.nocookie.net/7d2d-rebirth-mod/images/6/6c/Rebirth_Mod_Wallpaper1.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.20;  /* leicht sichtbar, aber nicht störend */
+        z-index: -1;
+    }
+
+    .container {
         padding: 20px;
     }
+
     h1 {
         color: #4cff4c;
+        text-shadow: 0 0 10px #000;
     }
+
     .file {
         margin: 10px 0;
-        padding: 10px;
-        background: #1b1b1b;
+        padding: 12px;
+        background: rgba(20, 20, 20, 0.75);
         border-radius: 6px;
+        box-shadow: 0 0 10px #000;
     }
+
     a {
-        color: #4cff4c;
+        color: #7dff7d;
         font-weight: bold;
         text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
     }
 </style>
 </head>
 <body>
+<div class="container">
+
 <h1>ReBirth Server Mods – Downloads</h1>
 <p>Alle ZIP-Dateien im Repository werden hier automatisch angezeigt.</p>
 
 <div id="list">Lade Dateien…</div>
+
+</div>
 
 <script>
 async function loadFiles() {
